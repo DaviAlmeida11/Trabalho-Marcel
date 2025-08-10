@@ -5,9 +5,9 @@
  * versão: 1.0
  *****************************************************************************************************************************************************************************/
 
-const validarJuros = require('./modulo/media')
 
-const calcularJuros = require('./modulo/media')
+const {calcularJuros, validarJuros} = require('./modulo/media')
+
 
 const readline = require('readline')
 
@@ -35,7 +35,14 @@ entradaDeDados.question('digite o seu nome : ', function (nome1) {
                         let periodo = periodo1
 
 
-                        let resultado = calcularJuros.calcularJuros(capital, taxa, tempo, periodo);
+                        let resultado = calcularJuros(capital1, taxa1, tempo1, periodo1);
+
+                          if (!validarJuros(capital1, taxa1, tempo1, periodo1, nome1, nomeProduto1)) {
+                            console.log(" Dados inválidos. Encerrando...")
+                            entradaDeDados.close()
+                            return
+                          }
+
                         console.log(`
                     ******************* Space.Davi *******************
                     
@@ -47,6 +54,7 @@ entradaDeDados.question('digite o seu nome : ', function (nome1) {
                     
                     ******************************************************
                     `)
+                       entradaDeDados.close();
 
 
 

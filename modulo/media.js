@@ -11,25 +11,36 @@
 
 function calcularJuros(capital1, taxa1, tempo1, periodo1, nome1, nomeProduto1) {
     let capital = Number(capital1)
-    let taxa = Number(taxa1) / 100
+    let taxa = Number(taxa1) 
     let tempo = Number(tempo1)
     let periodo = Number(periodo1)
     let nome = String(nome1)
-    let nomeDoProduto = String(nomeProduto1)
+    let nomeProduto = String(nomeProduto1)
+
+
+    let resultado = capital * taxa * tempo * periodo;
+    return resultado.toFixed(2)
 
 }
 
-    function validarJuros(validarJuros1){
-        if (isNaN(capital) || isNaN(taxa) || isNaN(tempo) || isNaN(periodo)) {
+    function validarJuros(capital1, taxa1, tempo1, periodo1, nome1, nomeProduto1) {
+    let capital = Number(capital1)
+    let taxa = Number(taxa1)
+    let tempo = Number(tempo1)
+    let periodo = Number(periodo1)
+    let nome = String(nome1)
+    let nomeProduto = String(nomeProduto1)
+
+        if (isNaN(capital1) || isNaN(taxa1) || isNaN(tempo1) || isNaN(periodo1)) {
             console.log('Erro, coloque números validos!')
+            return false
     
-    
-        } else if (capital1 == '' || taxa1 == '' || tempo1 == '' || periodo1 == '') {
+        } else if (capital1 == '' || taxa1 == '' || tempo1 == '' || periodo1 == '' || nome1 == '' || nomeProduto1 == '') {
             console.log('Error')
             return null
     
         } else if (!isNaN(nome1) || !isNaN(nomeProduto1)) {
-            console.log('Erro: não pode colocar números neste campo!')
+            console.log('Erro: não pode colocar números em nome e nome do produto !')
             return null
     
     
@@ -38,11 +49,7 @@ function calcularJuros(capital1, taxa1, tempo1, periodo1, nome1, nomeProduto1) {
             return null
 
         }
-            if(resultado != undefined){
-                return resultado
-             }else{
-                return false
-             }
+        return true
             
               
     
@@ -51,8 +58,8 @@ function calcularJuros(capital1, taxa1, tempo1, periodo1, nome1, nomeProduto1) {
 
 
 module.exports = {
-    calcularJuros,
-    validarJuros
+   validarJuros,
+   calcularJuros
 }
 
 
